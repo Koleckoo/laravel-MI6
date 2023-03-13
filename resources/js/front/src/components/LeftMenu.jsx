@@ -21,7 +21,7 @@ const LeftMenu = () => {
         <div className="left-menu__header">
           <img
             className="left-menu__seal"
-            src="img/mi6-seal.png"
+            src="/images/img/mi6-seal.png"
             alt="MI6 seal"
           />
         </div>
