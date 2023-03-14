@@ -17,32 +17,31 @@ class SearchController extends Controller
         $offset = ($page - 1) * $perPage;
 
 
-        if (!empty($status)) {
-            $people = Person::query()
-                ->where('status_id', '=', $status)
-                ->offset($offset)
-                ->limit($perPage)
-                ->get();
-        }
-        if (empty($status)) {
-            $people = Person::query()
-                ->where('name', 'LIKE', $search . '%')
-                ->offset($offset)
-                ->limit($perPage)
-                ->get();
-        }
-
-        // $people = Person::query();
         // if (!empty($status)) {
-        //     $people->where('status_id', '=', $status);
+        //     $people = Person::query()
+        //         ->where('status_id', '=', $status)
+        //         ->offset($offset)
+        //         ->limit($perPage)
+        //         ->get();
         // }
         // if (empty($status)) {
-        //     $people->where('name', 'LIKE', $search . '%');
+        //     $people = Person::query()
+        //         ->where('name', 'LIKE', $search . '%')
+        //         ->offset($offset)
+        //         ->limit($perPage)
+        //         ->get();
         // }
-        // dd($people->get());
-        // $people->offset($offset);
-        // $people->limit($perPage);
-        // $people->get();
+
+        $builder = Person::query()->with(['status']);
+        if (!empty($status)) {
+            $builder->where('status_id', '=', $status);
+        }
+        if (empty($status)) {
+            $builder->where('name', 'LIKE', $search . '%');
+        }
+
+        $people = $builder->offset($offset)->limit($perPage)->get();
+
 
 
 
