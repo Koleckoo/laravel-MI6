@@ -107,50 +107,61 @@ body {
     }
 }
 
-
 .people-of-interest {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-
-  input {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border-radius: 0.25em;
-    border: none;
-    margin-bottom: 0.25rem;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      font-size: 0.75rem;
-      margin-bottom: 0.5rem;
-    }
-  }
-
-  .pagination {
     display: flex;
-    justify-content: center;
-    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
 
-    button {
-      background-color: #163838;
-      color: white;
-      font-size: 1rem;
-      padding: 0.5rem;
-      border: none;
-      margin: 0 0.5rem;
-      cursor: pointer;
-      transition: background-color 0.2s;
-
-      &:hover {
-        background-color: #2b5554;
-      }
+    input {
+        padding: 0.5rem;
+        font-size: 1rem;
+        border-radius: 0.25em;
+        border: none;
+        margin-bottom: 0.25rem;
     }
-  }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+
+        button {
+            background-color: #163838;
+            color: white;
+            font-size: 1rem;
+            padding: 0.5rem;
+            border: none;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover {
+                background-color: #2b5554;
+            }
+        }
+    }
+}
+
+.status-filter__status:hover {
+    cursor: pointer;
+}
+
+.status-filter__status--selected {
+    background-color: goldenrod;
+    cursor: pointer;
+    border: black 1px solid;
+    color: white;
+    font-weight: bold;
 }

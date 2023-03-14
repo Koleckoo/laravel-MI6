@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import PersonDetail from "./PersonDetail";
+import StatusFilter from "./StatusFilter";
 
 export default function PeopleOfInterest() {
     const [query, setQuery] = useState("");
     const [people, setPeople] = useState([]);
     const [personId, setPersonId] = useState(null);
     const [page, setPage] = useState(1);
+    const [selectedStatus, setSelectedStatus] = useState("");
 
     const fetchPeople = async () => {
         const response = await fetch(
-            `/api/search?search=${encodeURIComponent(query)}&page=${page}`
+            `/api/search?search=${encodeURIComponent(
+                query
+            )}&page=${page}&status=${encodeURIComponent(selectedStatus)}`
         );
         const data = await response.json();
         // console.log(data);
@@ -18,7 +22,7 @@ export default function PeopleOfInterest() {
 
     useEffect(() => {
         fetchPeople();
-    }, [query, page]);
+    }, [query, page, selectedStatus]);
 
     const handleChange = (event) => {
         setQuery(event.target.value);
@@ -31,6 +35,10 @@ export default function PeopleOfInterest() {
 
     return (
         <div className="people-of-interest">
+            <StatusFilter
+                selectedStatus={selectedStatus}
+                setSelectedStatus={setSelectedStatus}
+            />
             <input onChange={handleChange} type="text" name="search" id="" />
             {personId === null ? (
                 <ul>
