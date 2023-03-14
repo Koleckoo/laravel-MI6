@@ -33,25 +33,38 @@ export default function PeopleOfInterest() {
         <div className="people-of-interest">
             <input onChange={handleChange} type="text" name="search" id="" />
             {personId === null ? (
-            <ul>
-                {people.length === 0 ? (
-                    <li>No results found</li>
-                ) : (
-                    people.map((person, i) => {
-                        return <li key={i}>{person.name}</li>;
-                    })
-                )}
-            </ul>
+                <ul>
+                    {people.length === 0 ? (
+                        <li>No results found</li>
+                    ) : (
+                        people.map((person, i) => {
+                            return (
+                                <li
+                                    key={i}
+                                    onClick={() => {
+                                        setPersonId(person.id);
+                                    }}
+                                >
+                                    {person.name}
+                                </li>
+                            );
+                        })
+                    )}
+                </ul>
             ) : (
                 <PersonDetail personId={personId} setPersonId={setPersonId} />
             )}
-                        <div className="pagination">
+            <div className="pagination">
                 {page > 1 && (
-                    <button onClick={() => handlePageChange(page - 1)}>Previous</button>
+                    <button onClick={() => handlePageChange(page - 1)}>
+                        Previous
+                    </button>
                 )}
                 <span className="page-number">{page}</span>
                 {people.length === 20 && (
-                    <button onClick={() => handlePageChange(page + 1)}>Next</button>
+                    <button onClick={() => handlePageChange(page + 1)}>
+                        Next
+                    </button>
                 )}
             </div>
         </div>
