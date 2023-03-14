@@ -10,14 +10,17 @@ class SearchController extends Controller
 {
     public function search(Request $request)
     {
+        $search = $request->input('search');
+        $page = $request->input('page', 1);
+        $perPage = 20;
+        $offset = ($page - 1) * $perPage;
 
-        $people = $request->input('search');
-
-        $person = Person::query()
-            ->where('name', 'LIKE', $people . '%')
-            ->limit(20)
+        $people = Person::query()
+            ->where('name', 'LIKE', $search . '%')
+            ->offset($offset)
+            ->limit($perPage)
             ->get();
 
-        return $person;
+        return $people;
     }
 }
