@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import PersonDetail from "./PersonDetail";
 
 export default function PeopleOfInterest() {
     const [query, setQuery] = useState("");
     const [people, setPeople] = useState([]);
+    const [personId, setPersonId] = useState(null);
     const [page, setPage] = useState(1);
 
     const fetchPeople = async () => {
@@ -30,6 +32,7 @@ export default function PeopleOfInterest() {
     return (
         <div className="people-of-interest">
             <input onChange={handleChange} type="text" name="search" id="" />
+            {personId === null ? (
             <ul>
                 {people.length === 0 ? (
                     <li>No results found</li>
@@ -39,7 +42,10 @@ export default function PeopleOfInterest() {
                     })
                 )}
             </ul>
-            <div className="pagination">
+            ) : (
+                <PersonDetail personId={personId} setPersonId={setPersonId} />
+            )}
+                        <div className="pagination">
                 {page > 1 && (
                     <button onClick={() => handlePageChange(page - 1)}>Previous</button>
                 )}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\PersonController;
 use App\Http\Controllers\Api\SearchController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/search', [SearchController::class, 'search']);
+Route::get('/people/{person_id}', [PersonController::class, 'show']);
