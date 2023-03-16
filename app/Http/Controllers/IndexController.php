@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function index() {
-
+    public function index()
+    {
+        //dd(auth()->user());
         return view('index.index');
     }
 }
