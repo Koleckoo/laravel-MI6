@@ -23,4 +23,9 @@ class Person extends Model
     {
         return $this->belongsTo(Status::class);
     }
+
+    public function Missions()
+    {
+        return $this->belongsToMany(Mission::class);
+    }
 }

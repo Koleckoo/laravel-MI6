@@ -185,6 +185,9 @@ return [
         /*
          * Package Service Providers...
          */
+        // adding this for the fortify to work
+        App\Providers\FortifyServiceProvider::class,
+
 
         /*
          * Application Service Providers...

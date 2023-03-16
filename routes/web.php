@@ -13,7 +13,5 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [IndexController::class, 'index'])->name("homepage");
-
-
+// this is how you enable React routing for every path that has / and whatever after
+Route::get('/{path?}', [IndexController::class, 'index'])->where('path', '.*')->name("homepage");
